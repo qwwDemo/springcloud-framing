@@ -1,0 +1,41 @@
+server:
+  port: 8089
+
+eureka:
+  client:
+    ###是否需要从eureka上检索服务
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:8100/eureka
+  instance:
+    prefer-ip-address: true #将自己的ip地址注册到Eureka服务中
+    instance-id: ${spring.application.name}###${server.port} #指定实例id
+#eureka:
+#  instance:
+#    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+#    prefer-ip-address: true
+spring:
+  application:
+    name: bigdate-helpcenter
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: bigdate-configserver
+        #github上的配置文件名（ 规则 /{label}/{application}-{profile}.properties ）
+      label: master
+      name: bigdate-helpcenter
+      profile: dev
+      uri: http://127.0.0.1:8888/
+
+#开启所有端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
+##MyBatis配置文件
+#mybatis:
+#  config-location: classpath:mybatis-config.xml
+#  mapper-locations: classpath:mappers/*.xml

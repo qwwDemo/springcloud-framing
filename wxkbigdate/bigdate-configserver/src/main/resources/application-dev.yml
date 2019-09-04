@@ -7,7 +7,7 @@ spring:
     config:
       server:
         git: #配置git仓库地址
-          uri: https://github.com/qwwDemo/SpringCloudConfig.git
+          uri: $$$$$$
           search-paths:
           - SpringCloudConfig		#配置文件目录地址
           username: $$$$$$	#github账号（公有项目不需要设置）
